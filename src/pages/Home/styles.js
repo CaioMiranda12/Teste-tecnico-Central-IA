@@ -7,6 +7,10 @@ export const MainBackground = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 60px;
+
+  @media (max-width: 400px) {
+    height: 60vh;
+  }
 `;
 
 export const MainContainer = styled.div`
@@ -17,6 +21,15 @@ export const MainContainer = styled.div`
   h2 {
     color: #fff;
     text-align: center;
+
+    @media (max-width: 900px) {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 13px;
+    }
   }
 `;
 
@@ -31,6 +44,10 @@ export const MainInputContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+
   input {
     outline: none;
     padding: 15px 0;
@@ -40,6 +57,11 @@ export const MainInputContainer = styled.div`
     background-color: transparent;
 
     font-size: 16px;
+
+    @media (max-width: 1000px) {
+      padding: 10px 0;
+      font-size: 13px;
+    }
   }
 `;
 
@@ -64,8 +86,20 @@ export const MainMostSearchs = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: center;
 
   color: #fff;
+
+  @media (max-width: 1000px) {
+    gap: 0;
+  }
+
+  span {
+    @media (max-width: 1000px) {
+      font-size: 12px;
+      padding: 0 10px;
+    }
+  }
 `;
 
 export const MostSearchItem = styled.a`
@@ -81,6 +115,10 @@ export const MostSearchItem = styled.a`
 
   color: #fff;
   text-decoration: none;
+
+  @media (max-width: 1000px) {
+    font-size: 10px;
+  }
 
   &:hover {
     color: #3d5eff;
@@ -98,6 +136,10 @@ export const AdvancedSearchItem = styled.a`
   color: #fff;
   text-decoration: none;
 
+  @media (max-width: 1000px) {
+    font-size: 12px;
+  }
+
   &:hover {
     opacity: 0.8;
   }
@@ -113,6 +155,10 @@ export const SectionIAs = styled.div`
   grid-template-columns: repeat(3, 25%);
   gap: 50px;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    gap: 30px;
+  }
 `;
 
 export const MostAcessIAContainer = styled.div`
@@ -125,10 +171,15 @@ export const MostAcessIAContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  justify-content: space-between;
 
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.32);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.32);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.32);
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 
   h3 {
     border-bottom: 1px solid #000;
@@ -147,10 +198,18 @@ export const MostAcessIAContainer = styled.div`
 
     span {
       font-weight: bold;
+
+      @media (max-width: 600px) {
+        font-size: 10px;
+      }
     }
 
     p {
       color: gray;
+
+      @media (max-width: 600px) {
+        font-size: 10px;
+      }
     }
   }
 
@@ -171,7 +230,6 @@ export const MostAcessIAContainer = styled.div`
 `;
 
 export const SectionInfoCentralIA = styled.div`
-  /* height: 60vh; */
   background-color: #3d5eff;
   margin: 0 50px;
   border-radius: 16px;
@@ -196,6 +254,11 @@ export const InfoTopItems = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 20%);
   justify-content: space-around;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 `;
 
 export const InfoTopText = styled.p`
@@ -246,10 +309,18 @@ export const TextInfoBottom = styled.div`
   border-radius: 16px;
   color: ${(props) => (props.isAnual ? '#000' : '#fff')};
   font-weight: ${(props) => props.isAnual && 'bold'};
+
+  display: flex;
+  align-items: center;
 `;
 
 export const InfoBottomCardItems = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 20%);
   justify-content: space-around;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 `;

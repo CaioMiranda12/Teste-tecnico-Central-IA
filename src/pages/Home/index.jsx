@@ -7,6 +7,8 @@ import {
 } from 'react-icons/md';
 
 import LogoChatGPT from '../../assets/logo-chatgpt.jpg';
+import { Footer } from '../../components/Footer';
+import { Header } from '../../components/Header';
 import { InfoTopItem } from '../../components/InfoTopItem';
 import { TestCardItem } from '../../components/TestCardItem';
 import {
@@ -34,6 +36,7 @@ import {
 export default function Home() {
   return (
     <div>
+      <Header />
       <MainBackground>
         <MainContainer>
           <h2>
@@ -277,6 +280,8 @@ export default function Home() {
           </InfoBottomCardItems>
         </InfoBottomContainer>
       </SectionInfoCentralIA>
+
+      <Footer />
     </div>
   );
 }

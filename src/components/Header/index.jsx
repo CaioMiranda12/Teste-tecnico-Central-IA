@@ -1,14 +1,31 @@
 import { IoSearchSharp } from 'react-icons/io5';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../../hooks/authContext';
+import { SignOut } from '../SignOut';
 import {
   Container,
   TopContainer,
   BottomContainer,
   TopLeftContainer,
   TopRightContainer,
+  TopInputContainer,
+  InputSearch,
+  InfoUser,
 } from './styles';
 
 export function Header() {
+  const { user, loading, error } = useAuth();
+  const navigate = useNavigate();
+
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
+
+  if (error) {
+    return <p>Ocorreu um erro: {error.message}</p>;
+  }
+
   return (
     <Container>
       <TopContainer>
@@ -23,12 +40,20 @@ export function Header() {
         </TopLeftContainer>
 
         <TopRightContainer>
-          <div>
+          <TopInputContainer>
             <IoSearchSharp />
-            <input placeholder="Buscar IA" />
-          </div>
-          <a href="/">Cadastrar</a>
-          <button type="button">Entrar</button>
+            <InputSearch placeholder="Buscar IA" />
+          </TopInputContainer>
+          <Link to="/cadastro">Cadastrar</Link>
+          <InfoUser>
+            {user ? (
+              <SignOut />
+            ) : (
+              <button onClick={() => navigate('/login')} type="button">
+                Entrar
+              </button>
+            )}
+          </InfoUser>
         </TopRightContainer>
       </TopContainer>
 
