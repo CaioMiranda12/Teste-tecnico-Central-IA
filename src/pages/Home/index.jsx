@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { HiRocketLaunch, HiOutlineBuildingLibrary } from 'react-icons/hi2';
 import {
@@ -11,6 +12,7 @@ import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { InfoTopItem } from '../../components/InfoTopItem';
 import { TestCardItem } from '../../components/TestCardItem';
+import { fetchAIs, fetchAIsRecents } from '../../services/api';
 import {
   MainBackground,
   MainContainer,
@@ -34,6 +36,23 @@ import {
 } from './styles';
 
 export default function Home() {
+  const [ais, setAIs] = useState([]);
+  const [aisRecents, setAIsRecents] = useState([]);
+
+  useEffect(() => {
+    const loadAIs = async () => {
+      const data = await fetchAIs();
+      setAIs(data);
+    };
+    loadAIs();
+
+    const loadAIsRecents = async () => {
+      const data2 = await fetchAIsRecents();
+      setAIsRecents(data2);
+    };
+    loadAIsRecents();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -81,45 +100,15 @@ export default function Home() {
           <h3>IAs mais acessadas</h3>
 
           <ul>
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
+            {ais.map((ai) => (
+              <li key={ai.id}>
+                <img src={ai.image} alt="imagem da ia" />
+                <div>
+                  <span>{ai.name}</span>
+                  <p>{ai.description}</p>
+                </div>
+              </li>
+            ))}
           </ul>
 
           <button type="button">Ver todas</button>
@@ -129,45 +118,15 @@ export default function Home() {
           <h3>IAs Recentes</h3>
 
           <ul>
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
-
-            <li>
-              <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
-            </li>
+            {aisRecents.map((ai) => (
+              <li key={ai.id}>
+                <img src={ai.image} alt="imagem da ia" />
+                <div>
+                  <span>{ai.name}</span>
+                  <p>{ai.description}</p>
+                </div>
+              </li>
+            ))}
           </ul>
 
           <button type="button">Ver todas</button>
@@ -179,42 +138,32 @@ export default function Home() {
           <ul>
             <li>
               <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
+
+              <span>Produtividade</span>
             </li>
 
             <li>
               <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
+
+              <span>Geração de Imagens</span>
             </li>
 
             <li>
               <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
+
+              <span>Geração de Textos</span>
             </li>
 
             <li>
               <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
+
+              <span>Análise de PDF</span>
             </li>
 
             <li>
               <img src={LogoChatGPT} alt="imagem da IA" />
-              <div>
-                <span>CHAT GPT</span>
-                <p>OpenIA</p>
-              </div>
+
+              <span>Produtividade</span>
             </li>
           </ul>
 

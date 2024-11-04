@@ -44,7 +44,7 @@ export function Header() {
             <IoSearchSharp />
             <InputSearch placeholder="Buscar IA" />
           </TopInputContainer>
-          <Link to="/cadastro">Cadastrar</Link>
+          {!user && <Link to="/cadastro">Cadastrar</Link>}
           <InfoUser>
             {user ? (
               <SignOut />

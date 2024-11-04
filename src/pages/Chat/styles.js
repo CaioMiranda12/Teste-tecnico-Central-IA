@@ -151,3 +151,20 @@ export const BottomChatMessage = styled.div`
     }
   }
 `;
+
+export const ResponseContainer = styled.div`
+  padding: 10px;
+  background-color: #f1f1f1;
+  margin-top: 10px;
+  border-radius: 5px;
+
+  p:first-child {
+    font-weight: bold;
+    color: #333;
+  }
+
+  p:last-child {
+    margin-top: 5px;
+    color: #555;
+  }
+`;

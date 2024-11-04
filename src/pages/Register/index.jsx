@@ -9,6 +9,7 @@ import * as yup from 'yup';
 
 import centralIAImage from '../../assets/loginImg.avif';
 import { auth } from '../../firebase/firebaseConnect';
+import { createUser } from '../../services/api';
 import {
   Container,
   Form,
@@ -51,13 +52,29 @@ export function Register() {
 
   const onSubmit = async (data) => {
     try {
-      await createUserWithEmailAndPassword(data.email, data.password);
+      const userCredential = await createUserWithEmailAndPassword(
+        data.email,
+        data.password,
+      );
+      const firebaseUid = userCredential.user.uid;
+
+      console.log('Tentando criar usuário no Supabase:', {
+        name: data.name,
+        email: data.email,
+        firebaseUid,
+      });
+      const supabaseResponse = await createUser(
+        data.name,
+        data.email,
+        firebaseUid,
+      );
+      console.log('Resposta do Supabase:', supabaseResponse);
 
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, { displayName: data.name });
       }
     } catch (err) {
-      console.log(error);
+      console.error('Erro ao registrar usuário:', err);
     }
   };
 
