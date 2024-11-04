@@ -15,6 +15,8 @@ Projeto realizado com React, Firebase Auth e Supabase Functions. Totalmente resp
 - yarn start
 
 ## Iniciar o Back End:
+Após fazer a parte do front end, no mesmo local:
+
 - cd my-supabase-api
 - node server.js
 
