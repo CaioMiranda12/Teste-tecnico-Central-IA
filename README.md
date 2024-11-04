@@ -1,6 +1,6 @@
 # Central IA - Teste Tecnico
 
-Projeto realizado com React, Firebase Auth e Supabase Functions. Totalmente responsivo ambas as páginas.
+Projeto realizado com React, Node.js, Firebase Auth e Supabase Functions. Totalmente responsivo ambas as páginas.
 
 ## Rotas Front End:
 - Login: /login
